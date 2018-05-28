@@ -42,7 +42,7 @@ draw_shades = false,
 default_shade_color = '657b83',
 show_graph_scale = false,
 show_graph_range = false,
-use_spacer = 'none',
+--use_spacer = 'none',
 extra_newline = false,
 
 -- TEXT
@@ -64,13 +64,14 @@ template3 = '${font Symbols Nerd Font:size=18}${font}',
 template4 = '${font Symbols Nerd Font:size=18}${font}',
 template5 = '${font Symbols Nerd Font:size=18}${font}',
 
-}
+};
 
 conky.text = [[
-# ${execi 2 ~/.conky/cover.sh}${alignc}${image /tmp/conkyCover.png -p -8,-1}
-${template5}  $mpd_title
-${mpd_bar 10,170}
-
+# ${if_running mpd}${voffset 10}${template5}
+# ${execi 2 ~/.conky/cover.sh}${alignc}${image /tmp/conkyCover.png -p 27}
+# ${voffset 35}
+# ${alignc}$mpd_title
+# ${mpd_bar 10,170}${endif}
 ${template3}  ${cpu}%
 ${cpubar 10,170}
 ${top name 1} ${alignr} ${top cpu 1}%
@@ -86,4 +87,4 @@ ${top_mem name 2} ${alignr} ${top_mem mem_res 2}
 ${top_mem name 3} ${alignr} ${top_mem mem_res 3}
 ${top_mem name 4} ${alignr} ${top_mem mem_res 4}
 ${top_mem name 5} ${alignr} ${top_mem mem_res 5}
-]]
+]];
